@@ -13,6 +13,7 @@ class App extends Component {
     markers: [],
     center: {},
     hover: false,
+    markerElements: [],
     style: {
       list: {
         background: 'lightgray',
@@ -23,7 +24,7 @@ class App extends Component {
         width: '75%'
       },
       listButton: {
-        width: '75%', 
+        width: '75%',
         fontSize: '0.8rem',
         padding: 10,
         margin: 12,
@@ -55,19 +56,24 @@ class App extends Component {
           id: venue.id
         };
       });
-      this.setState({ venues, center, markers});
+      this.setState({ venues, center, markers });
       // console.log('venues' , venues, 'center',center, 'markers',markers)
-      });
+    });
   }
-  openInfoWindow = (props, marker) => {
-    
-    if (!marker) {this.fetchMarker(props)}
 
+  // grab all marker elements
+  onMarkerMounted = element => {
+    this.setState(prevState => ({
+      markerElements: [...prevState.markerElements, element]
+    }))
+  };
+
+  openInfoWindow = (props, marker) => {
     this.setState({
       activeMarker: marker,
       // selectedPlace: props,
       showingInfoWindow: true
-    });
+    })
   }
 
   closeInfoWindow = () =>
@@ -77,11 +83,16 @@ class App extends Component {
       showingInfoWindow: false
     });
 
-  fetchMarker = (props) => {
-    console.log('fetching marker')
-    console.log(props.target.id)
-    console.log(this.state.markers)
+  getMarkerProps = (listProps) => {
+
+    let { marker, props } = this.state.markerElements.find(markerEl =>
+      markerEl.marker.name === listProps.target.innerText)
+
+    this.openInfoWindow(props, marker)
   }
+
+  // some function for later developemnt
+
   // onMouseOver = () => {
   //   this.setState(prevState => ({
   //     ...prevState,
@@ -101,23 +112,23 @@ class App extends Component {
   //   this.setState({hover: !this.state.hover})
   // }
 
-  listItemClick = (e) => {
-    console.log(e);
-  }
+  
   render() {
+    
     return (
       <div className="App">
         <Flexbox>
           <ListComp
             state={this.state}
-            openInfoWindow={this.openInfoWindow}
+            getMarkerProps={this.getMarkerProps}
             closeInfoWindow={this.closeInfoWindow}
-            // onMouseOver={this.onMouseOver}
+          // onMouseOver={this.onMouseOver}
           />
           <MapComp
             state={this.state}
             openInfoWindow={this.openInfoWindow}
             closeInfoWindow={this.closeInfoWindow}
+            onMarkerMounted={this.onMarkerMounted}
           />
         </Flexbox>
       </div>
