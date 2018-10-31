@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 class ListComp extends Component {
 
@@ -6,6 +7,9 @@ class ListComp extends Component {
     // assign location names to buttons
     return (
       <div style={this.props.state.style.list}>
+        
+        <OutlinedInput style={{color: 'blue'}}/>
+
         {this.props.state.venues.map(aVenue => (
           <button
             key={aVenue.id}

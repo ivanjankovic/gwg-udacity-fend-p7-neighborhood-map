@@ -18,7 +18,8 @@ class App extends Component {
       list: {
         background: 'lightgray',
         width: '25%',
-        height: '100vh'
+        height: '100vh',
+        paddingTop: '1.7rem'
       },
       map: {
         width: '75%'
