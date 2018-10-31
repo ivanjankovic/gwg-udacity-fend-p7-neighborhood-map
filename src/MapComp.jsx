@@ -15,7 +15,9 @@ export class MapComp extends Component {
         zoom={this.props.state.zoom}
         style={this.props.state.style.map}
         onClick={this.props.closeInfoWindow}
-        center={this.props.state.center}>
+        center={this.props.state.center}
+        role='application'
+        aria-label='map'>
 
         {this.props.state.venues.map(aVenue => (
           <Marker ref={this.props.onMarkerMounted}
@@ -24,7 +26,7 @@ export class MapComp extends Component {
             onClick={this.props.openInfoWindow}
             position={{ lat: aVenue.location.lat, lng: aVenue.location.lng }}/>
         ))}
-        
+
         <InfoWindow
           marker={this.props.state.activeMarker}
           // onClose={this.props.closeInfoWindow}

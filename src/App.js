@@ -19,7 +19,7 @@ class App extends Component {
         background: 'lightgray',
         width: '25%',
         height: '100vh',
-        paddingTop: '1.7rem'
+        paddingTop: '1rem'
       },
       map: {
         width: '75%'
@@ -44,7 +44,7 @@ class App extends Component {
     SquareAPI.search({
       near: 'New York, NY',
       query: 'library',
-      limit: 11
+      limit: 5
     }).then(results => {
       const { venues } = results.response;
       const { center } = results.response.geocode.feature.geometry;
