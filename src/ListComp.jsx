@@ -3,14 +3,6 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 class ListComp extends Component {
 
-  state = {
-    query: '',
-    filterdVenues: {},
-  }
-  onQueryChange(value) {
-    this.setState({ query: value })
-  }
-
   render() {
     // assign location names to buttons
     return (
@@ -19,10 +11,9 @@ class ListComp extends Component {
         <OutlinedInput
           style={{ color: 'blue', margin: '0.75rem' }}
           placeholder='Filter list'
-          onChange={event => this.onQueryChange(event.target.value)} />
+          onChange={event => this.props.onQueryChange(event.target.value)} />
 
-        {this.props.state.venues.filter(aVenue =>
-          aVenue.name.toLowerCase().includes(this.state.query.toLowerCase()))
+        {this.props.state.filterdVenues
           .map(aVenue => (
             <button
               key={aVenue.id}

@@ -15,18 +15,19 @@ export class MapComp extends Component {
         zoom={this.props.state.zoom}
         style={this.props.state.style.map}
         onClick={this.props.closeInfoWindow}
+        initialCenter={{ lat: 40.7738885, lng: 73.885231 }}
         center={this.props.state.center}
         role='application'
         aria-label='map'>
 
-        {this.props.state.venues.map(aVenue => (
+        {this.props.state.filterdVenues.map(aVenue => (
           <Marker ref={this.props.onMarkerMounted}
             key={aVenue.id}
             name={aVenue.name}
             onClick={this.props.openInfoWindow}
             position={{ lat: aVenue.location.lat, lng: aVenue.location.lng }}/>
         ))}
-
+        
         <InfoWindow
           marker={this.props.state.activeMarker}
           // onClose={this.props.closeInfoWindow}

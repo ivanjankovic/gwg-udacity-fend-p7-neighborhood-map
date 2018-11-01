@@ -10,6 +10,7 @@ class App extends Component {
 
   state = {
     venues: [],
+    filterdVenues: [],
     markers: [],
     center: {},
     hover: false,
@@ -57,7 +58,7 @@ class App extends Component {
           id: venue.id
         };
       });
-      this.setState({ venues, center, markers });
+      this.setState({ venues, filterdVenues: venues, center, markers });
       // console.log('venues' , venues, 'center',center, 'markers',markers)
     });
   }
@@ -68,6 +69,12 @@ class App extends Component {
       markerElements: [...prevState.markerElements, element]
     }))
   };
+
+  onQueryChange = (query)=> {
+    this.setState( {query} )
+    this.setState({filterdVenues: this.state.venues.filter(aVenue => aVenue.name.includes(query))
+    })
+  }
 
   openInfoWindow = (props, marker) => {
     this.setState({
@@ -113,9 +120,9 @@ class App extends Component {
   //   this.setState({hover: !this.state.hover})
   // }
 
-  
+
   render() {
-    
+
     return (
       <div className="App">
         <Flexbox>
@@ -123,6 +130,7 @@ class App extends Component {
             state={this.state}
             getMarkerProps={this.getMarkerProps}
             closeInfoWindow={this.closeInfoWindow}
+            onQueryChange={this.onQueryChange}
           // onMouseOver={this.onMouseOver}
           />
           <MapComp
