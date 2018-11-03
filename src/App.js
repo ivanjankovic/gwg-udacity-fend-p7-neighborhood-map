@@ -1,148 +1,165 @@
 import React, { Component } from 'react'
-import Flexbox from 'flexbox-react'
 import './App.css'
-import MapComp from './MapComp'
-import ListComp from './ListComp'
 import SquareAPI from './SquareAPI'
+import MapComp from './MapComp'
+import Drawer from './Drawer'
 
+const style = {
+  inputField: { 
+    width: '230px',
+    color: 'blue',
+    margin: '1.25rem'
+  },
+  list: {
+    padding: 8,
+    // background: 'lightgray',
+    // width: '30%',
+    // maxWidth: 330,
+    // width: '100vw',
+    // height: '100vh',
+    // paddingTop: '1rem',
+    // justifyContent: 'space-evenly'
+  },
+  map: {
+    // width: 'auto',
+    // height: 'auto',
+    margin: 12,
+    // marginBottom: 72,
+    // marginRight: 270,
+    borderRadius: 5,
+    // position: 'inherit',
+    // display: 'flex',
+    // alignItems: 'center',
+    // boxSizing: 'inherit',
+    // marginLeft: '290px',
+  },
+  listButton: {
+    width: 'auto',
+    fontSize: '0.55px',
+    padding: 15,
+    margin: 12,
+    borderRadius: "3.3px",
+    background: 'lightgray',
+  }
+}
 
 class App extends Component {
 
   state = {
-    venues: [],
+    squareVenues: [],
+    mapCenter: {},
     filterdVenues: [],
-    markers: [],
+    allMarkers: [],
     center: {},
-    hover: false,
-    markerElements: [],
-    style: {
-      list: {
-        background: 'lightgray',
-        width: '25%',
-        height: '100vh',
-        paddingTop: '1rem'
-      },
-      map: {
-        width: '75%'
-      },
-      listButton: {
-        width: '75%',
-        fontSize: '0.8rem',
-        padding: 10,
-        margin: 12,
-        borderRadius: "2px",
-        cursor: 'pointer',
-        background: 'white',
-      }
-    },
+    mapLoaded: false,
+    dropPins: true,
     zoom: 14,
-    activeMarker: {},
     selectedPlace: {},
-    showingInfoWindow: false
-  };
+    showingInfoWindow: false,
+  }
 
   componentDidMount() {
     SquareAPI.search({
       near: 'New York, NY',
       query: 'library',
-      limit: 5
+      limit: 10
     }).then(results => {
-      const { venues } = results.response;
-      const { center } = results.response.geocode.feature.geometry;
-      const markers = venues.map(venue => {
-        return {
-          lat: venue.location.lat,
-          lng: venue.location.lng,
-          isOpen: false,
-          isVisible: true,
-          id: venue.id
-        };
-      });
-      this.setState({ venues, filterdVenues: venues, center, markers });
-      // console.log('venues' , venues, 'center',center, 'markers',markers)
-    });
+      this.setState({
+        squareVenues: results.response.venues,
+        filterdVenues: results.response.venues,
+        mapCenter: results.response.geocode.feature.geometry.center
+      })
+    })
   }
 
-  // grab all marker elements
-  onMarkerMounted = element => {
-    this.setState(prevState => ({
-      markerElements: [...prevState.markerElements, element]
-    }))
+  whenMapIsReady = (mapProps, map) => {
+    this.setState({ map })
+    setTimeout(() => this.createMarkers(), 2500)
   };
 
-  onQueryChange = (query)=> {
-    this.setState( {query} )
-    this.setState({filterdVenues: this.state.venues.filter(aVenue => aVenue.name.includes(query))
+  createMarkers = () => {
+    let allMarkers = []
+    this.state.filterdVenues.forEach((aVenue) => {
+      // console.log(aVenue)
+      let marker = new window.google.maps.Marker({
+        map: this.state.map,
+        name: aVenue.name,
+        animation: window.google.maps.Animation.DROP,
+        position: { lat: aVenue.location.lat, lng: aVenue.location.lng },
+      });
+      marker.addListener('click', () => this.onMarkerClick(marker))
+      allMarkers.push(marker)
+      this.setState({ allMarkers })
+      console.log(marker.name)
     })
   }
 
-  openInfoWindow = (props, marker) => {
+  clearMarkers = () => {
+    this.state.allMarkers.forEach(marker => marker.setMap(null))
+  }
+
+  onMarkerClick = (marker) => {
     this.setState({
-      activeMarker: marker,
-      // selectedPlace: props,
+      selectedPlace: marker,
       showingInfoWindow: true
     })
+    this.handleBounce(marker)
   }
 
-  closeInfoWindow = () =>
-    this.state.showingInfoWindow &&
+  handleBounce = (marker) => {
+    console.log(marker)
+    marker.setAnimation(window.google.maps.Animation.BOUNCE)
+    setTimeout(() => marker.setAnimation(null), 2500)
+  }
+
+  onListClick = (event) => {
+    console.log('list ITEM clicked', event)
+    // find matching marker
+    let marker = this.state.allMarkers.find(aMarker =>
+      aMarker.name === event.target.innerText)
+    // update active place
+    console.log('matching marker', marker)
+    this.onMarkerClick(marker)
+  }
+
+  closeInfoWindow = () => this.setState({
+    activeMarker: null,
+    showingInfoWindow: false
+  })
+
+  onQueryChange = (query) => {
+    this.clearMarkers()
     this.setState({
-      // activeMarker: null,
+      query,
+      filterdVenues: this.state.squareVenues.filter(aVenue => aVenue.name.includes(query)),
+      dropPins: true,
       showingInfoWindow: false
-    });
-
-  getMarkerProps = (listProps) => {
-
-    let { marker, props } = this.state.markerElements.find(markerEl =>
-      markerEl.marker.name === listProps.target.innerText)
-
-    this.openInfoWindow(props, marker)
+    },
+      () => this.createMarkers()
+    )
   }
-
-  // some function for later developemnt
-
-  // onMouseOver = () => {
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //       style: {
-  //         ...prevState.style,
-  //           listButton: {
-  //             ...prevState.style.listButton, 
-  //               fontSize: '0.9rem',
-  //               width: '80%',
-  //               background: 'gray',
-  //           }
-  //       }
-  //   }))
-  // }
-
-  // toggleHover() {
-  //   this.setState({hover: !this.state.hover})
-  // }
-
 
   render() {
-
+    console.log(this.props.theme)
     return (
-      <div className="App">
-        <Flexbox>
-          <ListComp
-            state={this.state}
-            getMarkerProps={this.getMarkerProps}
-            closeInfoWindow={this.closeInfoWindow}
-            onQueryChange={this.onQueryChange}
-          // onMouseOver={this.onMouseOver}
-          />
-          <MapComp
-            state={this.state}
-            openInfoWindow={this.openInfoWindow}
-            closeInfoWindow={this.closeInfoWindow}
-            onMarkerMounted={this.onMarkerMounted}
-          />
-        </Flexbox>
+      <div className='main'>
+        <Drawer 
+          state={this.state}
+          style={style}
+          onListClick={this.onListClick}
+          onQueryChange={this.onQueryChange}
+          closeInfoWindow={this.closeInfoWindow}
+        />
+        <MapComp
+          state={this.state}
+          style={style}
+          onMarkerClick={this.onMarkerClick}
+          whenMapIsReady={this.whenMapIsReady}
+          closeInfoWindow={this.closeInfoWindow}
+        />
       </div>
-    );
+  )
   }
 }
 
-export default App;
+export default (App);

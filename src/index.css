@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* styling that was chalaging to implement with React */
+
+.ResponsiveDrawer-root-1 .ResponsiveDrawer-content-7 {
+  padding: 0px;
+}
+.main > div:last-child > div:first-child   {
+  height: calc(100% - 64px) !important;
+} 
+@media only screen and (min-width: 600px) {
+
+  .main > div:last-child > div:first-child   {
+    position: fixed !important;
+    margin-left: 270px !important;
+    width: calc(100% - 270px) !important;
+  } 
+}

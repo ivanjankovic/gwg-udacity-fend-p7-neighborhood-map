@@ -4,12 +4,17 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.3.2",
+    "@material-ui/icons": "^3.0.1",
+    "ajv": "^6.5.4",
     "flexbox-react": "^4.4.0",
     "google-maps-react": "^2.0.2",
+    "material-ui": "^0.20.2",
+    "radium": "^0.25.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",
-    "rmwc": "^3.0.9"
+    "rmwc": "^3.0.9",
+    "simple-flexbox": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

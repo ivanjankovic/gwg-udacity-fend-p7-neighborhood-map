@@ -1,44 +1,41 @@
 import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import { Map, InfoWindow, GoogleApiWrapper } from 'google-maps-react'
 
 
 const apiKey = 'AIzaSyDS-ak8ed2Bx4ib-u9-9KCRHdLJVKYKvlY'
 
 export class MapComp extends Component {
-  
+
   render() {
+    const { google, state, style, whenMapIsReady } = this.props;
     
     return (
       
       <Map
-        google={this.props.google}
-        zoom={this.props.state.zoom}
-        style={this.props.state.style.map}
-        onClick={this.props.closeInfoWindow}
-        initialCenter={{ lat: 40.7738885, lng: 73.885231 }}
-        center={this.props.state.center}
+        google={google}
+        zoom={state.zoom}
+        style={style.map}
+        onReady={whenMapIsReady}
+        // onReady={this.mapReady}
+        // onClick={this.props.closeInfoWindow}
+        initialCenter={{ lat: 40.745, lng: -73.985 }}
+        center={state.mapCenter}
         role='application'
-        aria-label='map'>
-
-        {this.props.state.filterdVenues.map(aVenue => (
-          <Marker ref={this.props.onMarkerMounted}
-            key={aVenue.id}
-            name={aVenue.name}
-            onClick={this.props.openInfoWindow}
-            position={{ lat: aVenue.location.lat, lng: aVenue.location.lng }}/>
-        ))}
+        aria-label='map'
+      >
+        {console.log('RENDERING MAP')}
         
         <InfoWindow
-          marker={this.props.state.activeMarker}
+          marker={state.selectedPlace}
           // onClose={this.props.closeInfoWindow}
-          visible={this.props.state.showingInfoWindow}>
+          visible={state.showingInfoWindow}>
           <div>
-            <h4>{this.props.state.activeMarker.name}</h4>
+            <h4>{state.selectedPlace.name}</h4>
           </div>
         </InfoWindow>
-        
-      </Map>
       
+      </Map>
+
     );
   }
 }
