@@ -3,6 +3,7 @@ import './App.css'
 import SquareAPI from './SquareAPI'
 import MapComp from './MapComp'
 import Drawer from './Drawer'
+import ErrorComp from './ErrorComp'
 
 const style = {
   list: {
@@ -38,7 +39,9 @@ class App extends Component {
     mapLoaded: false,
     dropPins: true,
     selectedPlace: null,
-    showingInfoWindow: false
+    showingInfoWindow: false,
+    squareAPIerror: false,
+    mapVisible: true
   }
 
   componentDidMount() {
@@ -47,6 +50,12 @@ class App extends Component {
       query: 'library',
       limit: 10
     }).then(results => {
+      // when squareAPI responds with error message
+      results.meta.errorDetail ? 
+      this.setState({
+        squareAPIerror: true,
+        mapVisilbe: false
+      }) :
       this.setState({
         squareVenues: results.response.venues,
         filterdVenues: results.response.venues,
@@ -148,6 +157,7 @@ class App extends Component {
           whenMapIsReady={this.whenMapIsReady}
           closeInfoWindow={this.closeInfoWindow}
         />
+        {this.state.squareAPIerror && <ErrorComp />}
       </div>
   )
   }

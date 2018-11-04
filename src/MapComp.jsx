@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, GoogleApiWrapper } from 'google-maps-react'
-import handleAE from './handleAE'
+import handleAE from './ErrorComp'
 
 
 const apiKey = 'AIzaSyDS-ak8ed2Bx4ib-u9-9KCRHdLJVKYKvlY'
@@ -11,17 +11,12 @@ export class MapComp extends Component {
     const { google, state, style, whenMapIsReady, closeInfoWindow } = this.props
     const venue = state.selectedPlace
     
-    // const infoBody = (
-    //         <div>
-    //           <h4>{venue.name}</h4>
-    //           <h4>{venue.location.address}, {venue.location.city}</h4>
-    //         </div>
-    // )
     return (
       
       <Map
         aria-label='map'
         role='application'
+        visible={state.mapVisible}
         google={google}
         style={style.map}
         zoom={state.zoom}

@@ -23,12 +23,19 @@ code {
 }
 .main > div:last-child > div:first-child   {
   height: calc(100% - 64px) !important;
-} 
+}
+.error {
+  height: calc(100% - 89px);
+  width: -webkit-fill-available;
+}
 @media only screen and (min-width: 600px) {
 
   .main > div:last-child > div:first-child   {
     position: fixed !important;
     margin-left: 270px !important;
     width: calc(100% - 270px) !important;
+  }
+  .error {
+    margin-left: 282px !important;
   } 
 }
