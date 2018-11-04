@@ -10,16 +10,14 @@ const style = {
     padding: 5
   },
   inputField: { 
-    width: '233px',
+    width: '-webkit-fill-available',
     color: 'blue',
-    margin: '1.2rem'
+    margin: '0.9rem'
   },
   listButton: {
-    width: 'auto',
-    padding: 15,
-    margin: 12,
-    borderRadius: "3.3px",
-    background: 'lightgray',
+    width: '-webkit-fill-available',
+    padding: 12,
+    textTransform: 'none',
   },
   map: {
     margin: 12,
@@ -110,6 +108,7 @@ class App extends Component {
   }
 
   onListClick = (event) => {
+    console.log('listButton Clicked', event)
     // find matching marker
     let marker = this.state.allMarkers.find(aMarker =>
       aMarker.name === event.target.innerText)

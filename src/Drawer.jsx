@@ -17,6 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 // import MailIcon from '@material-ui/icons/Mail';
 import OutlinedInput from '@material-ui/core/OutlinedInput'
+import Button from '@material-ui/core/Button'
 
 const drawerWidth = 270;
 
@@ -50,6 +51,12 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
 });
 
 class ResponsiveDrawer extends React.Component {
@@ -81,14 +88,15 @@ class ResponsiveDrawer extends React.Component {
         <List style={style.list}>
           {state.filterdVenues.map(aVenue => (
 
-            <ListItem button
+            <Button 
               key={aVenue.id}
+              variant="outlined" 
+              className={classes.button}
               onClick={this.props.onListClick}
               style={style.listButton}
             >
-              <ListItemText primary={aVenue.name} />
-
-            </ListItem>
+              <ListItemText style={{fontSize: '22px'}} primary={aVenue.name}/>
+            </Button>
             ))}
         </List>
         <Divider />
