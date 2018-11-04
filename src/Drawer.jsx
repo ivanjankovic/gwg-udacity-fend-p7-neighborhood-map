@@ -12,14 +12,11 @@ import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import MailIcon from '@material-ui/icons/Mail';
 import OutlinedInput from '@material-ui/core/OutlinedInput'
-// import Radium from 'radium';
-import withWidth from '@material-ui/core/withWidth';
-import MapComp from './MapComp'
 
 const drawerWidth = 270;
 
@@ -66,29 +63,36 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    console.log(this.props.theme)
+    const { style, state, onQueryChange} = this.props;
+    
     const drawer = (
       <div>
         <div className={classes.toolbar} />
         <Divider />
-        {/* <div style={styles2}>testing</div> */}
+
         <OutlinedInput
-          style={this.props.style.inputField}
+          style={style.inputField}
           placeholder='Filter list'
-          onChange={event => this.props.onQueryChange(event.target.value)} />
+          onChange={event => onQueryChange(event.target.value)}
+          labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
+        />
         <Divider />
-        <List style={this.props.style.list}>
-          {this.props.state.filterdVenues.map(aVenue => (
+
+        <List style={style.list}>
+          {state.filterdVenues.map(aVenue => (
+
             <ListItem button
               key={aVenue.id}
               onClick={this.props.onListClick}
-              style={this.props.style.listButton}
+              style={style.listButton}
             >
               <ListItemText primary={aVenue.name} />
+
             </ListItem>
             ))}
         </List>
         <Divider />
+
       </div>
     );
 
@@ -106,7 +110,7 @@ class ResponsiveDrawer extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Responsive drawer
+              NYC Libraries
             </Typography>
           </Toolbar>
         </AppBar>

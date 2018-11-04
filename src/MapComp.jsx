@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, GoogleApiWrapper } from 'google-maps-react'
+import handleAE from './handleAE'
 
 
 const apiKey = 'AIzaSyDS-ak8ed2Bx4ib-u9-9KCRHdLJVKYKvlY'
@@ -7,37 +8,42 @@ const apiKey = 'AIzaSyDS-ak8ed2Bx4ib-u9-9KCRHdLJVKYKvlY'
 export class MapComp extends Component {
 
   render() {
-    const { google, state, style, whenMapIsReady } = this.props;
+    const { google, state, style, whenMapIsReady, closeInfoWindow } = this.props
+    const venue = state.selectedPlace
     
+    // const infoBody = (
+    //         <div>
+    //           <h4>{venue.name}</h4>
+    //           <h4>{venue.location.address}, {venue.location.city}</h4>
+    //         </div>
+    // )
     return (
       
       <Map
-        google={google}
-        zoom={state.zoom}
-        style={style.map}
-        onReady={whenMapIsReady}
-        // onReady={this.mapReady}
-        // onClick={this.props.closeInfoWindow}
-        initialCenter={{ lat: 40.745, lng: -73.985 }}
-        center={state.mapCenter}
-        role='application'
         aria-label='map'
-      >
-        {console.log('RENDERING MAP')}
-        
+        role='application'
+        google={google}
+        style={style.map}
+        zoom={state.zoom}
+        center={state.mapCenter}
+        onReady={whenMapIsReady}
+        onClick={closeInfoWindow}
+        initialCenter={{ lat: 40.745, lng: -73.985 }}
+      > 
         <InfoWindow
+          visible={state.showingInfoWindow}
           marker={state.selectedPlace}
-          // onClose={this.props.closeInfoWindow}
-          visible={state.showingInfoWindow}>
+          onClose={closeInfoWindow}
+        >
           <div>
-            <h4>{state.selectedPlace.name}</h4>
+              <h4>{venue && venue.name}</h4>
+              <h4>{venue && venue.location.address}</h4>
           </div>
         </InfoWindow>
-      
-      </Map>
 
+      </Map>
     );
   }
 }
 
-export default GoogleApiWrapper({ apiKey })(MapComp)
+export default GoogleApiWrapper({ apiKey, LoadingContainer: handleAE})(MapComp)

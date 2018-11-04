@@ -18,6 +18,9 @@ code {
 .ResponsiveDrawer-root-1 .ResponsiveDrawer-content-7 {
   padding: 0px;
 }
+.MuiTypography-subheading-73 {
+  font-size: 0.85rem !important;
+}
 .main > div:last-child > div:first-child   {
   height: calc(100% - 64px) !important;
 } 
