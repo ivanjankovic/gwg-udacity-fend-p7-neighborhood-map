@@ -13,7 +13,10 @@ This is the 7th project of the Front End Web Development NanoDegree. It uses Goo
 
 ### Service Worker
 
-Create-react-app was used for making this app, service worker is present in the starter code and workls propery in production build.
+Create-react-app was used for making this app, service worker is present in the starter code and workls propery in production build. To get the app in production build:
+- serve -s build
+- npm run serve
+- navigate to `http://localhost:5000`
 
 ### Dependencies
 
