@@ -82,7 +82,7 @@ class ResponsiveDrawer extends React.Component {
           style={style.inputField}
           placeholder='Filter list'
           onChange={event => onQueryChange(event.target.value)}
-          labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
+          aria-label='filter list'
         />
         <Divider />
 
