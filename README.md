@@ -2,7 +2,7 @@
 
 This is the 7th project of the Front End Web Development NanoDegree. It uses Google's Maps API and ForSquare API service to display a map, markers, and information. Bulit with React.
 
-## How to Run
+### How to Run
 
 * clone the repository
 * swich to the cloned folder
@@ -15,7 +15,7 @@ This is the 7th project of the Front End Web Development NanoDegree. It uses Goo
 
 Create-react-app was used for making this app, service worker is present in the starter code and workls propery in production build.
 
-## Dependencies
+### Dependencies
 
 - bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 - [Google Maps API](https://cloud.google.com/maps-platform/)
@@ -23,8 +23,9 @@ Create-react-app was used for making this app, service worker is present in the 
 - [Material-UI](https://material-ui.com/)
 - [google-maps-react](https://github.com/fullstackreact/google-maps-react)
 
-## References and Acknowledgements
+### Acknowledgements
 
-* 
-* Elharony's [Google Maps with React](https://www.youtube.com/channel/UCcWSbBe_s-T_gZRnqFbtyIA) tutorial
+* Doug Brown's [P7 Walkthrough](https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be)
 * Forrest Walker's [Neighborhood Map Walkthrough](https://www.youtube.com/playlist?list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP)
+* Ryan Waite's [Google Maps with React JS](https://www.youtube.com/watch?v=5J6fs_BlVC0&feature=youtu.be)
+* Elharony's [Google Maps with React](https://www.youtube.com/channel/UCcWSbBe_s-T_gZRnqFbtyIA)
