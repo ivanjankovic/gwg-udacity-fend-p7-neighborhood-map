@@ -18,6 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import MailIcon from '@material-ui/icons/Mail';
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 
 const drawerWidth = 270;
 
@@ -85,6 +86,24 @@ class ResponsiveDrawer extends React.Component {
         />
         <Divider />
 
+        {state.squareAPIerror && 
+          <TextField
+            disabled
+            error
+            id="outlined-error"
+            label="Error"
+            defaultValue='ForSquare data unavalable'
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            style={{
+              margin: '15px',
+              width: '-webkit-fill-available',
+            }}
+            visible='false'
+          />
+        }
+        
         <List style={style.list}>
           {state.filterdVenues.map(aVenue => (
 

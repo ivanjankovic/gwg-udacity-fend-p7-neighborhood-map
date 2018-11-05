@@ -49,17 +49,12 @@ class App extends Component {
       limit: 10
     }).then(results => {
       // when squareAPI responds with error message
-      results.meta.errorDetail ? 
-      this.setState({
-        squareAPIerror: true,
-        mapVisilbe: false
-      }) :
       this.setState({
         squareVenues: results.response.venues,
         filterdVenues: results.response.venues,
         mapCenter: results.response.geocode.feature.geometry.center
       })
-    })
+    }).catch(() => this.setState( {squareAPIerror: true, mapVisilbe: false} ))
   }
 
   whenMapIsReady = (mapProps, map) => {

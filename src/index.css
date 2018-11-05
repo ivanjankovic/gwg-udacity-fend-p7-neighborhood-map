@@ -28,6 +28,10 @@ code {
   height: calc(100% - 89px);
   width: -webkit-fill-available;
 }
+#outlined-error {
+  color: rgb(255, 80, 0);
+  letter-spacing: .05rem;
+}
 @media only screen and (min-width: 600px) {
 
   .main > div:last-child > div:first-child   {
