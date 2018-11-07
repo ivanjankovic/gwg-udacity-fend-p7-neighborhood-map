@@ -5,7 +5,7 @@ This is the 7th project of the Front End Web Development NanoDegree. It uses Goo
 ### Live version available at
 https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map/ 
 
-### How to Deploy React App to GitHub Pages
+### How to deploy React app to GitHub Pages
 https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
 
 ### How to Run
