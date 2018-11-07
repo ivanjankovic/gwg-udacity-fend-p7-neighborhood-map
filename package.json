@@ -2,18 +2,18 @@
   "name": "gwg-udacity-fend-p7-neighborhood-map",
   "version": "0.1.0",
   "private": true,
-  "hompage": "https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map/",
+  "hompage": "https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map",
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",
     "ajv": "^6.5.4",
     "flexbox-react": "^4.4.0",
-    "gh-pages": "^2.0.1",
     "google-maps-react": "^2.0.2",
     "material-ui": "^0.20.2",
     "radium": "^0.25.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
     "rmwc": "^3.0.9",
     "simple-flexbox": "^1.2.0",
@@ -35,5 +35,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
