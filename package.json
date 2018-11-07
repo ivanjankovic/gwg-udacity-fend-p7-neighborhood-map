@@ -2,7 +2,7 @@
   "name": "gwg-udacity-fend-p7-neighborhood-map",
   "version": "0.1.0",
   "private": true,
-  "hompage": "https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map",
+  "homepage": "https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map",
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",

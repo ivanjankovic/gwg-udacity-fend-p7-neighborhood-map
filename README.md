@@ -2,20 +2,23 @@
 
 This is the 7th project of the Front End Web Development NanoDegree. It uses Google's Maps API and ForSquare API service to display a map, markers, and information. Bulit with React.
 
+### How to Deploy React App to GitHub Pages
+`https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom`
+
 ### How to Run
 
 * clone the repository
 * swich to the cloned folder
-* run `$ npm install`
-* run `$ npm start`
+* run `npm install`
+* run `npm start`
 * navigate to `http://localhost:3000`
 
 
 ### Service Worker
 
 Create-react-app was used for making this app, service worker is present in the starter code and workls propery in production build. To get the app in production build:
-- serve -s build
-- npm run serve
+- `serve -s build`
+- `npm run serve`
 - navigate to `http://localhost:5000`
 
 ### Dependencies
