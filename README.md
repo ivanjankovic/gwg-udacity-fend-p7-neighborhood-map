@@ -2,7 +2,7 @@
 
 This is the 7th project of the Front End Web Development NanoDegree. It uses Google's Maps API and ForSquare API service to display a map, markers, and information. Bulit with React.
 
-## Live version available at
+### Live version available at
 https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map/ 
 
 ### How to Deploy React App to GitHub Pages
