@@ -19,6 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
 
 const drawerWidth = 270;
 
@@ -83,6 +84,7 @@ class ResponsiveDrawer extends React.Component {
           placeholder='Filter list'
           onChange={event => onQueryChange(event.target.value)}
           aria-label='filter list'
+          labelWidth={this.labelRef ? this.labelRef.offsetWidth : 0}
         />
         <Divider />
 
