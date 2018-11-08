@@ -16,7 +16,7 @@ code {
 /* styling that was chalaging to implement with React */
 
 .ResponsiveDrawer-root-1 .ResponsiveDrawer-content-7,
-.main > .jss7 {
+.main > div:first-child > .jss7 {
   padding: 0px;
 }
 .MuiTypography-subtitle1-86 {
