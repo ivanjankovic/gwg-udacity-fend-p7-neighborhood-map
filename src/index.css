@@ -19,6 +19,11 @@ code {
 .main > div:first-child > div:last-child {
   padding: 0px;
 }
+
+.main > .jss1 > .jss17 {
+  padding: 0px;
+  background-color: aqua;
+}
 .MuiTypography-subtitle1-86 {
   font-size: 0.9rem !important;
   color: rgba(170, 10, 190, 1) !important;
