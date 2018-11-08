@@ -19,9 +19,9 @@ code {
 .main > div:first-child > div:last-child {
   padding: 0px;
 }
-.jss17 {
-  padding: 0px;
-  background-color: aqua;
+#root {
+  
+  background-color: green;
 }
 .main > .jss1 > .jss17 {
   padding: 0px;
