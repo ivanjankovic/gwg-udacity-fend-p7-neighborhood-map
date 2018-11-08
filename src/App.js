@@ -52,7 +52,8 @@ class App extends Component {
       this.setState({
         squareVenues: results.response.venues,
         filterdVenues: results.response.venues,
-        mapCenter: results.response.geocode.feature.geometry.center
+        mapCenter: results.response.geocode.feature.geometry.center,
+        
       })
     }).catch(() => this.setState( {squareAPIerror: true, mapVisilbe: false} ))
   }

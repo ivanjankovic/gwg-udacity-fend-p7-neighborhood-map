@@ -15,14 +15,15 @@ code {
 
 /* styling that was chalaging to implement with React */
 
-.ResponsiveDrawer-root-1 .ResponsiveDrawer-content-7 {
+.ResponsiveDrawer-root-1 .ResponsiveDrawer-content-7, .jss7 {
   padding: 0px;
 }
-.MuiTypography-subheading-75 {
+.MuiTypography-subtitle1-86 {
   font-size: 0.9rem !important;
+  color: rgba(170, 10, 190, 1) !important;
 }
-.main > div:last-child > div:first-child   {
-  height: calc(100% - 64px) !important;
+.main > div:nth-child(2) > div:first-child   {
+  height: calc(100% - 65px) !important;
 }
 .error {
   height: calc(100% - 89px);
@@ -34,7 +35,7 @@ code {
 }
 @media only screen and (min-width: 600px) {
 
-  .main > div:last-child > div:first-child   {
+  .main > div:nth-child(2) > div:first-child   {
     position: fixed !important;
     margin-left: 270px !important;
     width: calc(100% - 270px) !important;
