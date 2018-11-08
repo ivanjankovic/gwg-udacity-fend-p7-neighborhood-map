@@ -4,7 +4,7 @@ class Helper {
   }
   static auth(){
       const keys = {
-          client_id:'?N2LF450TRQ1L3PF3DSWNIV1N3UXBH1LRQ5LQ4PULFCAIO5A5',
+          client_id:'N2LF450TRQ1L3PF3DSWNIV1N3UXBH1LRQ5LQ4PULFCAIO5A5',
           client_secret:'ONQENVONQGOXO0UJ2WCXC1A55Q3F00X0CAV505SXNUPAXOJD',
           v: '20181028'
       };

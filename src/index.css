@@ -15,21 +15,14 @@ code {
 
 /* styling that was chalaging to implement with React */
 
-.ResponsiveDrawer-root-1 .ResponsiveDrawer-content-7,
-.main > div:first-child > div:last-child {
-  padding: 0px;
+/* fix the padding in material UI */
+main {
+  padding: 0px !important;
 }
-#root {
-  
-  background-color: green;
-}
-.main > .jss1 > .jss17 {
-  padding: 0px;
-  background-color: aqua;
-}
-.MuiTypography-subtitle1-86 {
+/* adjust font size in drawer list */
+button span span {
   font-size: 0.9rem !important;
-  color: rgba(170, 10, 190, 1) !important;
+  line-height: 1.5 !important;
 }
 .main > div:nth-child(2) > div:first-child   {
   height: calc(100% - 65px) !important;
