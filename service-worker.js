@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/gwg-udacity-fend-p7-neighborhood-map/precache-manifest.be615c348c6a6c34498a2ae00531c715.js"
+  "/gwg-udacity-fend-p7-neighborhood-map/precache-manifest.5980c0d99be1a9830c3cb35c486750af.js"
 );
 
 workbox.clientsClaim();
