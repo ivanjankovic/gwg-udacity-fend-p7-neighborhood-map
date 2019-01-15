@@ -8,6 +8,9 @@ https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map/
 ### How to deploy React app to GitHub Pages
 https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
 
+### Making Your Website Shareable on LinkedIn
+https://www.linkedin.com/help/linkedin/answer/46687/making-your-website-shareable-on-linkedin?lang=en
+
 ### How to Run
 
 * clone the repository
