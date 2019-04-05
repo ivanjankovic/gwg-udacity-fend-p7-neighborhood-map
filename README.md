@@ -5,12 +5,6 @@ This is the 7th project of the Front End Web Development NanoDegree. It uses Goo
 ### Live version available at
 https://ivanjanko.github.io/gwg-udacity-fend-p7-neighborhood-map/ 
 
-### How to deploy React app to GitHub Pages
-https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
-
-### Making Your Website Shareable on LinkedIn
-https://www.linkedin.com/help/linkedin/answer/46687/making-your-website-shareable-on-linkedin?lang=en
-
 ### How to Run
 
 * clone the repository
@@ -34,6 +28,12 @@ Create-react-app was used for making this app, service worker is present in the 
 - [Foursquare API](https://developer.foursquare.com/)
 - [Material-UI](https://material-ui.com/)
 - [google-maps-react](https://github.com/fullstackreact/google-maps-react)
+
+### How to deploy React app to GitHub Pages
+https://facebook.github.io/create-react-app/docs/deployment#github-pages-https-pagesgithubcom
+
+### Making Your Website Shareable on LinkedIn
+https://www.linkedin.com/help/linkedin/answer/46687/making-your-website-shareable-on-linkedin?lang=en
 
 ### Acknowledgements
 
