@@ -12,7 +12,8 @@ const style = {
   inputField: { 
     width: '-webkit-fill-available',
     color: 'blue',
-    margin: '0.9rem'
+    margin: '0.9rem',
+    background: '#eee'
   },
   listButton: {
     width: '-webkit-fill-available',

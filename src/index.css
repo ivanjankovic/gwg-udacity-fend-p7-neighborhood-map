@@ -35,6 +35,13 @@ button span span {
   color: rgb(255, 80, 0);
   letter-spacing: .05rem;
 }
+
+/* qucik change 6+ moths after the project */
+.MuiOutlinedInput-input-143 {
+  
+  letter-spacing: 0.125rem;
+}
+
 @media only screen and (min-width: 600px) {
 
   .main > div:nth-child(2) > div:first-child   {
