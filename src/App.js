@@ -30,7 +30,7 @@ class App extends Component {
 
   state = {
     squareVenues: [],
-    // filterdVenues: [],
+    filterdVenues: [],
     allMarkers: [],
     zoom: 14,
     center: {},
@@ -87,14 +87,9 @@ class App extends Component {
       this.setState({ allMarkers })
     })
   }
-  // showMarker = () => {
-  //   this.setState({
-  //     allMarkers: 
-  //   })
-  // }
 
+  // this function is not in use
   clearMarkers = () => {
-    // this.setState({ allMarkers: [] })
     this.state.allMarkers.forEach(marker => marker.setMap(null))
   }
 
@@ -126,17 +121,13 @@ class App extends Component {
   })
 
   onQueryChange = (query) => {
-    // this.filterMarkers(query)
-    // this.clearMarkers()
+    this.filterMarkers(query)
     this.setState({
       query,
-      allMarkers: this.filterMarkers(query),
-      // filterdVenues: this.filterVenues(query),
+      filterdVenues: this.filterVenues(query),
       dropPins: false,
       showingInfoWindow: false
-    },
-      // () => this.createMarkers()
-    )
+    })
   }
 
   filterVenues = (query) => {
@@ -148,7 +139,6 @@ class App extends Component {
     this.state.allMarkers.map(marker =>
       marker.name.toLowerCase().includes(query.toLowerCase()) ? marker.setMap(this.state.map) :marker.setMap(null)
     )
-    return this.state.allMarkers
   }
 
   render() {
