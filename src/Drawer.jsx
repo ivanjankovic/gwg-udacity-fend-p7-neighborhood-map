@@ -107,7 +107,7 @@ class ResponsiveDrawer extends React.Component {
         }
         
         <List style={style.list}>
-          {state.filterdVenues.map(aVenue => (
+          {/* {state.filterdVenues.map(aVenue => (
 
             <Button 
               key={aVenue.id}
@@ -118,7 +118,7 @@ class ResponsiveDrawer extends React.Component {
             >
               <ListItemText style={{fontSize: '22px'}} primary={aVenue.name}/>
             </Button>
-            ))}
+            ))} */}
         </List>
         <Divider />
 

@@ -30,7 +30,7 @@ class App extends Component {
 
   state = {
     squareVenues: [],
-    filterdVenues: [],
+    // filterdVenues: [],
     allMarkers: [],
     zoom: 14,
     center: {},
@@ -76,6 +76,7 @@ class App extends Component {
           map: this.state.map,
           name: aVenue.name,
           location: aVenue.location,
+          visible: true,
           animation: this.state.dropPins ? window.google.maps.Animation.DROP: null,
           position: { lat: aVenue.location.lat, lng: aVenue.location.lng },
         })
@@ -86,8 +87,14 @@ class App extends Component {
       this.setState({ allMarkers })
     })
   }
+  // showMarker = () => {
+  //   this.setState({
+  //     allMarkers: 
+  //   })
+  // }
 
   clearMarkers = () => {
+    // this.setState({ allMarkers: [] })
     this.state.allMarkers.forEach(marker => marker.setMap(null))
   }
 
@@ -119,20 +126,29 @@ class App extends Component {
   })
 
   onQueryChange = (query) => {
-    this.clearMarkers()
+    // this.filterMarkers(query)
+    // this.clearMarkers()
     this.setState({
       query,
-      filterdVenues: this.filterVenues(query),
+      allMarkers: this.filterMarkers(query),
+      // filterdVenues: this.filterVenues(query),
       dropPins: false,
       showingInfoWindow: false
     },
-      () => this.createMarkers()
+      // () => this.createMarkers()
     )
   }
 
   filterVenues = (query) => {
     return this.state.squareVenues.filter(aVenue => 
       aVenue.name.toLowerCase().includes(query.toLowerCase()))
+  }
+
+  filterMarkers = (query) => {
+    this.state.allMarkers.map(marker =>
+      marker.name.toLowerCase().includes(query.toLowerCase()) ? marker.setMap(this.state.map) :marker.setMap(null)
+    )
+    return this.state.allMarkers
   }
 
   render() {
